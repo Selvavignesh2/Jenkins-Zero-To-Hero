@@ -1,12 +1,5 @@
 pipeline {
-    agent any 
-
-    stages {
-        stage('Clone Repository') {
-            steps {
-                git 'https://your-repo-url.git'  // Replace with your Git repository URL
-            }
-        }
+    agent any
 
         stage('Build Docker Image') {
             steps {
