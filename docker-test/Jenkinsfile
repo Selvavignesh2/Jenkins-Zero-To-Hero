@@ -1,20 +1,38 @@
 pipeline {
     agent any 
+
     stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://your-repo-url.git'  // Replace with your Git repository URL
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t selvavignesh02/alpine:latest .'
+                script {
+                    // Build the Docker image
+                    sh 'docker build -t my-app-image .'
+                }
             }
         }
+
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d selvavignesh02/alpine:latest'
+                script {
+                    // Run the Docker container
+                    sh 'docker run -d -p 8080:8080 --name my-running-app my-app-image'
+                }
             }
         }
-        stage('Push to Docker Registry') {
-            steps {
-                sh 'docker push selvavignesh02/alpine:latest'
-            }
+    }
+
+    post {
+        success {
+            echo "Docker container is running successfully."
+        }
+        failure {
+            echo "Build or Run failed."
         }
     }
 }
