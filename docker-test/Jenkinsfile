@@ -11,10 +11,10 @@ pipeline {
                 sh 'docker run -d alpine:latest'
             }
         }
-        stega("push to docker registry") {
+        stage("push to docker registry") {
             steps {
                 sh 'docker push selvavignesh02/alpine:latest'
             }
         }
     }
-}
+
