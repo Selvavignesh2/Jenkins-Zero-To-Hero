@@ -1,0 +1,20 @@
+pipeline {
+    agent any 
+    stages {
+        stage("Build Docker Image") {
+            steps {
+                sh 'docker build -t alpine:latest .'
+            }
+        }
+        stage("Run Docker Container") {
+            steps {
+                sh 'docker run -d alpine:latest'
+            }
+        }
+        stega("push to docker registry") {
+            steps {
+                sh 'docker push selvavignesh02/alpine:latest'
+            }
+        }
+    }
+}
