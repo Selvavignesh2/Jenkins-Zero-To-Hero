@@ -1,20 +1,22 @@
 pipeline {
     agent any 
     stages {
-        stage("Build Docker Image") {
+        stage('Build Docker Image') {
             steps {
-                sh 'docker build -t alpine:latest .'
+                sh 'docker build -t selvavignesh02/alpine:latest .'
             }
         }
-        stage("Run Docker Container") {
+        stage('Run Docker Container') {
             steps {
-                sh 'docker run -d alpine:latest'
+                sh 'docker run -d selvavignesh02/alpine:latest'
             }
         }
-        stage("push to docker registry") {
+        stage('Push to Docker Registry') {
             steps {
                 sh 'docker push selvavignesh02/alpine:latest'
             }
         }
     }
+}
+
 
