@@ -10,6 +10,7 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 
-# Run the Python app when the container launches
-CMD ["python3", "-m", "http.server", "8082"]
+# Run the Python app when the container launch
+CMD ["python3", "-m", "http.server", "8082", "--bind", "0.0.0.0"]
+
 
