@@ -11,5 +11,5 @@ WORKDIR /app
 COPY . /app
 
 # Run the Python app when the container launches
-CMD ["python3", "-m", "http.server", "8080"]
+CMD ["python3", "-m", "http.server", "8082"]
 
