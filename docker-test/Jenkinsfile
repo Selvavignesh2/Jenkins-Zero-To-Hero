@@ -20,6 +20,14 @@ pipeline {
                 }
             }
         }
+        stage('Push Docker Container') {
+            steps {
+                script {
+                    // Run the Docker container
+                    sh 'docker push selvavignesh02/my-running-app my-app-image'
+                }
+            }
+        }
     }
 
     post {
@@ -31,5 +39,4 @@ pipeline {
         }
     }
 }
-
 
