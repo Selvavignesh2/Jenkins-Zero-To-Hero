@@ -8,17 +8,8 @@ pipeline {
           sh 'node --version'
         }
       }
-      stage('Build') {
-        when {
-            expression { parama.jdkVersion == "14" }
-        }
-        steps {
-            echo 'Building Jdk 14'
-        }
-      }
-    }
-
-   post {
+  
+     post {
      success {
        echo "Build Secceeded"
     }
