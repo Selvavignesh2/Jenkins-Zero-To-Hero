@@ -1,18 +1,27 @@
 pipeline {
-  agent {
-    docker { image 'node:16-alpine' }
-  }
-  stages {
-    stage('Test') {
-      steps {
-        sh 'node --version'
+    agent {
+      docker { image 'node:16-alpine' }
+    }
+    stages {
+      stage('Test') {
+        steps {
+          sh 'node --version'
+        }
+      }
+      stage('Build') {
+        when {
+            expression { parama.jdkVersion == "14" }
+        }
+        steps {
+            echo 'Building Jdk 14'
+        }
       }
     }
-  }
- post {
-   success {
-     echo "Build Secceeded"
-  }
- }
 
-}
+   post {
+     success {
+       echo "Build Secceeded"
+    }
+   }
+  
+  }
